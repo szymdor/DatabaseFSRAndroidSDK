@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/config_fragment">
+
+    <fragment
+        android:id="@+id/config_fragment"
+        android:name="com.szymdor.fsr.ConfigFragment"
+        android:label="fragment_config"
+        tools:layout="@layout/fragment_config" >
+        <action
+            android:id="@+id/action_config_to_signal"
+            app:destination="@id/signal_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signal_fragment"
+        android:name="com.szymdor.fsr.SignalFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_signal" >
+        <action
+            android:id="@+id/action_signal_to_config"
+            app:destination="@id/config_fragment" />
+        <argument
+            android:name="isBT"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="alarmLow"
+            app:argType="float" />
+        <argument
+            android:name="alarmHigh"
+            app:argType="float" />
+    </fragment>
+</navigation>

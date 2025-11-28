@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="fragment"
+            type="com.szymdor.fsr.ConfigFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ConfigFragment">
+
+        <TextView
+            android:id="@+id/minPressure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/min"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/maxPressure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/max"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="minPressure, maxPressure" />
+
+        <TextView
+            android:id="@+id/lowPressureThreshold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/low"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier1"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/lowValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/lowHint"
+            app:layout_constraintStart_toEndOf="@+id/lowPressureThreshold"
+            app:layout_constraintTop_toBottomOf="@+id/barrier1"
+            android:layout_marginStart="8dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="lowPressureThreshold, lowValue" />
+
+        <TextView
+            android:id="@+id/highPressureThreshold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/high"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier2"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/highValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/highHint"
+            app:layout_constraintStart_toEndOf="@+id/highPressureThreshold"
+            app:layout_constraintTop_toBottomOf="@+id/barrier2"
+            android:layout_marginStart="8dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="highPressureThreshold, highValue" />
+
+        <TextView
+            android:id="@+id/connectionInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier3"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"  />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/connectionInfo"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/bluetooth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="8"
+                android:text="@string/bluetooth"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="8"
+                android:text="@string/wifi"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:onClick="@{() -> fragment.navigateToSignalFragment()}"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="12dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

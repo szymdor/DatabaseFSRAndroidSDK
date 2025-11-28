@@ -1,0 +1,23 @@
+<resources>
+    <!--Config fragment strings-->
+    <string name="app_name">FSR</string>
+    <string name="min">Pₘᵢₙ = 1,5 barów</string>
+    <string name="max">Pₘₐₓ = 5 barów</string>
+    <string name="low">Dolna granica ciśnienia:</string>
+    <string name="lowHint">&gt; Pₘᵢₙ</string>
+    <string name="high">Spodziewane ciśnienie w oponie:</string>
+    <string name="highHint">&lt; Pₘₐₓ</string>
+    <string name="info">Wybierz rodzaj komunikacji:</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="wifi">WiFi</string>
+    <string name="next">OK</string>
+
+    <!--Toast strinds-->
+    <string name="komunikat_toast_1">Wartości nie mieszczą się w dopuszczalnym zakresie.</string>
+    <string name="komunikat_toast_2">Należy wprowadzić wartości typu Float.</string>
+
+    <!--Signal fragment strings-->
+    <string name="current">P =</string>
+    <string name="end">Zakończ pomiary</string>
+
+</resources>

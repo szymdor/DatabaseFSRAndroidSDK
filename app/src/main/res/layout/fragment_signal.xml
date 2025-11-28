@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.szymdor.fsr.SignalsViewModel" />
+        <variable
+            name="fragment"
+            type="com.szymdor.fsr.SignalFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignalFragment">
+
+        <TextView
+            android:id="@+id/currentPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/currentPressureValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.lastValue)}"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="12dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="currentPressure, currentPressureValue" />
+
+        <com.github.mikephil.charting.charts.ScatterChart
+            android:id="@+id/plot"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier1"
+            android:layout_margin="16dp"/>
+
+        <Button
+            android:id="@+id/click2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add 2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/plot"
+            android:layout_marginTop="12dp"/>
+
+        <Button
+            android:id="@+id/click5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add 5"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/plot"
+            android:layout_marginTop="12dp"/>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="click2, click5" />
+
+        <Button
+            android:id="@+id/clickEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end"
+            android:onClick="@{() -> fragment.navigateToConfigFragment()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier2"
+            android:layout_marginTop="12dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
