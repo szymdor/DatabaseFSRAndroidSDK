@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.szymdor.fsr"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -21,6 +21,7 @@ android {
 
     buildTypes {
         release {
+            isDebuggable = true
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -46,6 +47,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.2"
     }
+    //repositories {
+        //mavenCentral()
+    //}
 }
 
 dependencies {
@@ -84,6 +88,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.activity:activity-compose")
+
+    implementation("com.google.accompanist:accompanist-permissions:0.34.0")
+
+    implementation("com.github.weliem:blessed-kotlin:3.0.8")
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     //implementation("androidx.compose.runtime:runtime-livedata:1.9.0")
     //implementation(project(":shared"))

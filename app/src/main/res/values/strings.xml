@@ -12,12 +12,14 @@
     <string name="wifi">WiFi</string>
     <string name="next">OK</string>
 
-    <!--Toast strinds-->
+    <!--Toast strings-->
+    <string name="komunikat_ble_1">Urządzenie nie wspiera komunikacji Bluetooth.</string>
     <string name="komunikat_toast_1">Wartości nie mieszczą się w dopuszczalnym zakresie.</string>
     <string name="komunikat_toast_2">Należy wprowadzić wartości typu Float.</string>
 
     <!--Signal fragment strings-->
     <string name="current">P =</string>
     <string name="end">Zakończ pomiary</string>
+    <string name="scan_devices">Wyszukaj urządzenia</string>
 
 </resources>

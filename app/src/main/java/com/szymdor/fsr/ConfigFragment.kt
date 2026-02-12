@@ -1,6 +1,5 @@
 package com.szymdor.fsr
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,16 +17,6 @@ class ConfigFragment : Fragment() {
     //Czy to jest potrzebne???
     lateinit var viewModel: ConfigViewModel
 
-
-    //val bluetoothLEAvailable = packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)
-
-
-
-    private val blePermissions = arrayOf(
-        android.Manifest.permission.BLUETOOTH_SCAN,
-        android.Manifest.permission.BLUETOOTH_CONNECT
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,13 +32,8 @@ class ConfigFragment : Fragment() {
         val high = binding.highValue.text.toString().toFloatOrNull()
         if (low != null && high != null) {
             if (low in 1.5F..high && high <= 5.0F) {
+
                 val sourceOfData = binding.radioGroup.checkedRadioButtonId == R.id.bluetooth
-                if(sourceOfData==true){
-
-                }
-                else{
-
-                }
                 val action = ConfigFragmentDirections.actionConfigToSignal(isBT = sourceOfData, alarmLow = low, alarmHigh = high)
                 findNavController().navigate(action)
             } else {
