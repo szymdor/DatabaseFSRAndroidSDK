@@ -94,6 +94,16 @@
             app:layout_constraintTop_toBottomOf="@id/barrier2"
             android:layout_marginTop="12dp" />
 
+        <Button
+            android:id="@+id/btnScan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_devices"
+            app:layout_constraintTop_toBottomOf="@id/clickEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

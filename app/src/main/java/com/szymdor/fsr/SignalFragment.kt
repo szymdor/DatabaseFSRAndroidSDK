@@ -1,6 +1,8 @@
 package com.szymdor.fsr
 
+import android.content.Context
 import android.graphics.Color
+import android.location.LocationManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +17,6 @@ import com.github.mikephil.charting.data.ScatterData
 import com.github.mikephil.charting.data.ScatterDataSet
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 
 import androidx.navigation.fragment.navArgs
 
@@ -28,10 +28,6 @@ class SignalFragment : Fragment() {
     private val args: SignalFragmentArgs by navArgs()
 
     private lateinit var chart: ScatterChart
-    //private val timeMillis = 20_000L
-    //private val entries = mutableListOf<Entry>()
-    //private lateinit var adapterData: LineDataSet
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,21 +46,14 @@ class SignalFragment : Fragment() {
 
         //button Add 2 action
         binding.click2.setOnClickListener {
-                viewModel.newValue = 2.0F
-                viewModel.addSignal()
+            viewModel.newValue = 2.0F
+            viewModel.addSignal()
         }
 
         //button Add 5 action
         binding.click5.setOnClickListener {
             viewModel.newValue = 5.0F
             viewModel.addSignal()
-        }
-
-        if(args.isBT){
-            //connect to BT
-        }
-        else{
-            //connect to wifi
         }
 
         //Uwzględnić progi alarmowe: args.alarmLow i args.alarmHigh
@@ -137,6 +126,12 @@ class SignalFragment : Fragment() {
     fun navigateToConfigFragment() {
         binding.viewModel?.clearAllSignals()
         findNavController().navigate(R.id.action_signal_to_config)
+    }
+
+    private fun checkLocationEnabled(): Boolean {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
 
     override fun onDestroyView() {
